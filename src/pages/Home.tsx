@@ -1,49 +1,17 @@
-import headerImage from "../assets/landing-page/landing-page-img-1.png";
+import HeroSection from "@components/home/HeroSection";
+import FirstPart from "@components/home/FirstPart";
+import SecondPart from "@components/home/SecondPart";
+import ThirdPart from "@components/home/ThirdPart";
+import FourthPart from "@components/home/FourthPart";
 
-export default function Home() {
+export default function HomeScreen() {
     return (
-        <div
-            style={{
-                backgroundImage: `url(${headerImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                width: "100%",
-                height: "49vw",
-                display: "flex",
-            }}
-        >
-            <h1
-                className="margin_container"
-                style={{
-                    alignSelf: "center",
-                    color: "white",
-                    fontSize: "108px",
-                    width: "100%",
-                    fontWeight: "normal",
-                    lineHeight: "110px",
-                    textTransform: "uppercase",
-                    marginLeft: "100px",
-                }}
-            >
-                Ihre perfekte Matratze,
-            </h1>
-            <h1
-                className="margin_container"
-                style={{
-                    alignSelf: "end",
-                    textAlign: "end",
-                    color: "white",
-                    fontSize: "108px",
-                    fontWeight: "normal",
-                    lineHeight: "110px",
-                    textTransform: "uppercase",
-                    marginRight: "100px",
-                    marginBottom: "90px",
-                }}
-            >
-                Unser Handwerk
-            </h1>
-        </div>
+        <>
+            <HeroSection />
+            <FirstPart />
+            <SecondPart />
+            <ThirdPart />
+            <FourthPart />
+        </>
     );
 }

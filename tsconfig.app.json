@@ -16,6 +16,19 @@
         "noEmit": true,
         "jsx": "react-jsx",
 
+        /* Path Aliases */
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@components/*": ["src/components/*"],
+            "@assets/*": ["src/assets/*"],
+            "@styles/*": ["src/styles/*"],
+            "@utils/*": ["src/utils/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@lib/*": ["src/lib/*"],
+            "@types/*": ["src/types/*"]
+        },
+
         /* Linting */
         "strict": true,
         "noUnusedLocals": true,

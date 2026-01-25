@@ -1,6 +1,7 @@
 import type { ClassValue } from "clsx";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { SIDE_SPACES } from "@/lib/commonStyles";
 
 export default function TimelineCarousel({
     className,
@@ -9,17 +10,108 @@ export default function TimelineCarousel({
     className?: ClassValue;
     items: TimelineCarouselItemProps[];
 }) {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const itemWidth = 166;
+    const itemGap = 300;
+
+    // Create tripled array for infinite scroll effect
+    const tripledItems = [...items, ...items, ...items];
+    const itemsCount = items.length;
+
+    const handleItemClick = (clickedIndex: number) => {
+        // Determine which set (0, 1, or 2) the clicked item belongs to
+        const itemIndexInSet = clickedIndex % itemsCount;
+        scrollToIndex(itemIndexInSet, true);
+        setSelectedIndex(itemIndexInSet);
+    };
+
+    const scrollToIndex = (index: number, smooth: boolean = true) => {
+        if (!scrollContainerRef.current) return;
+
+        const container = scrollContainerRef.current;
+
+        container.scrollTo({
+            left: index * (itemWidth + itemGap),
+            behavior: smooth ? "smooth" : "auto",
+        });
+    };
+
     return (
-        <div className={cn(className)}>
-            {items.map((item, index) => (
-                <TimelineCarouselItem
-                    key={index}
-                    className={item.className}
-                    year={item.year}
-                    description={item.description}
-                    images={item.images}
-                />
-            ))}
+        <div className={cn("flex flex-col overflow-visible", className)}>
+            {/* Main carousel display - shows only selected item */}
+            <div className="relative w-full mb-[42px] overflow-hidden">
+                {items.map((item, index) => (
+                    <div
+                        key={index}
+                        className={cn(
+                            "transition-opacity duration-500 ease-in-out",
+                            selectedIndex === index
+                                ? "opacity-100"
+                                : "opacity-0 absolute inset-0 pointer-events-none",
+                        )}
+                    >
+                        <TimelineCarouselItem
+                            year={item.year}
+                            description={item.description}
+                            images={item.images}
+                        />
+                    </div>
+                ))}
+            </div>
+            <hr className="mb-[42px] border-[#AEAEAE]" />
+            {/* Navigation items - scrollable horizontal list */}
+            <div className="overflow-visible w-full">
+                <div
+                    ref={scrollContainerRef}
+                    className={cn(
+                        "flex overflow-x-auto scrollbar-hide scroll-smooth",
+                        SIDE_SPACES.PADDING_LEFT,
+                    )}
+                    style={{
+                        scrollbarWidth: "none",
+                        msOverflowStyle: "none",
+                        gap: `${itemGap}px`,
+                    }}
+                >
+                    {tripledItems.map((item, index) => {
+                        const itemIndexInSet = index % itemsCount;
+                        const isSelected = itemIndexInSet === selectedIndex;
+
+                        return (
+                            <button
+                                key={index}
+                                onClick={() => handleItemClick(index)}
+                                style={{
+                                    width: `${itemWidth}px`,
+                                }}
+                                className={cn(
+                                    "flex-shrink-0 text-left transition-all duration-300",
+                                    isSelected
+                                        ? "opacity-100"
+                                        : "opacity-50 hover:opacity-75",
+                                    isSelected
+                                        ? "text-[#232A11]"
+                                        : "text-[#AEAEAE]",
+                                )}
+                            >
+                                <div className="flex flex-col items-center gap-2">
+                                    <h3
+                                        className={cn(
+                                            "text-[72px] font-medium text-center transition-colors duration-300 whitespace-nowrap",
+                                        )}
+                                    >
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-[20px] text-center whitespace-nowrap">
+                                        {item.shortDescription}
+                                    </p>
+                                </div>
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
         </div>
     );
 }
@@ -38,6 +130,8 @@ type TimelineCarouselItemImageProp = {
 export type TimelineCarouselItemProps = {
     className?: ClassValue;
     year: string;
+    title: string;
+    shortDescription: string;
     description: ReactNode;
     images: TimelineCarouselItemImageProp[];
 };
@@ -47,10 +141,9 @@ function TimelineCarouselItem({
     year,
     description,
     images,
-}: TimelineCarouselItemProps) {
+}: Omit<TimelineCarouselItemProps, "title" | "shortDescription">) {
     const yearDivRef = useRef<HTMLDivElement>(null);
     const [yearWidth, setYearWidth] = useState<number>(0);
-    console.log(yearWidth);
 
     useEffect(() => {
         const el = yearDivRef.current;

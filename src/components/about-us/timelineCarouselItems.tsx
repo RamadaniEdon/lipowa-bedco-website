@@ -15,6 +15,8 @@ import Year2026Img2 from "@assets/uberuns/today-2.png";
 export const timelineCarouselItems: TimelineCarouselItemProps[] = [
     {
         year: "1909",
+        title: "1909",
+        shortDescription: "Erste Gründung",
         description: (
             <p>
                 Michael Lieberknecht gründet ein Sattler-, Tapezier- und
@@ -43,6 +45,8 @@ export const timelineCarouselItems: TimelineCarouselItemProps[] = [
     },
     {
         year: "1948",
+        title: "1948",
+        shortDescription: "Neue Fertigung ",
         description: (
             <p>
                 Die Söhne Ludwig und Arthur Lieberknecht übernehmen und starten
@@ -71,6 +75,8 @@ export const timelineCarouselItems: TimelineCarouselItemProps[] = [
     },
     {
         year: "1959",
+        title: "1959",
+        shortDescription: "Standort Wechsel",
         description: (
             <p>
                 Umzug in den heutigen Firmensitz mit eigener Fertigung.
@@ -100,6 +106,8 @@ export const timelineCarouselItems: TimelineCarouselItemProps[] = [
     },
     {
         year: "1970",
+        title: "1970",
+        shortDescription: "Größte Phase",
         description: (
             <p>
                 Lipowa erreicht mit 180 Mitarbeitern einen Höchststand, der
@@ -129,6 +137,8 @@ export const timelineCarouselItems: TimelineCarouselItemProps[] = [
     },
     {
         year: "1997",
+        title: "1997",
+        shortDescription: "Moderner Neustart",
         description: (
             <p>
                 Werner und Susanne Lieberknecht übernehmen die Leitung in
@@ -158,6 +168,8 @@ export const timelineCarouselItems: TimelineCarouselItemProps[] = [
     },
     {
         year: "2026",
+        title: "Heute",
+        shortDescription: "Moderner Neustart",
         description: (
             <p>
                 Lipowa gehört zu den wenigen erfolgreichen deutschen

@@ -25,7 +25,7 @@ const Navbar = ({
             className={cn(
                 "w-full transition-all duration-[700ms] ease-in-out",
                 positioned === "absolute"
-                    ? "absolute top-0 left-0 z-10"
+                    ? "absolute top-0 left-0 z-20"
                     : "relative",
                 className,
             )}
@@ -34,7 +34,7 @@ const Navbar = ({
             <div
                 onMouseLeave={() => setIsExpanded(false)}
                 className={cn(
-                    "absolute top-0 left-0 w-full transition-all duration-[700ms] ease-in-out overflow-hidden bg-white shadow-md",
+                    "absolute top-0 left-0 w-full transition-all duration-[700ms] ease-in-out overflow-hidden bg-white",
                     isExpanded ? "max-h-[600px]" : "max-h-0",
                 )}
             >
@@ -103,7 +103,7 @@ const Navbar = ({
             </div>
 
             {/* Main navbar - always visible, no background, positioned on top */}
-            <div className={cn(SIDE_SPACES.MARGIN, "relative z-10")}>
+            <div className={cn(SIDE_SPACES.MARGIN, "relative z-20")}>
                 <div className="flex items-center justify-between h-16 min-h-[100px]">
                     {/* Logo */}
                     <div className="relative right-2 text-2xl font-bold transition-colors duration-[700ms]">

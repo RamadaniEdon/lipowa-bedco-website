@@ -98,7 +98,7 @@ export default function TimelineCarousel({
                                 <div className="flex flex-col items-center gap-2">
                                     <h3
                                         className={cn(
-                                            "text-[72px] font-medium text-center transition-colors duration-300 whitespace-nowrap",
+                                            "text-[72px] text-center transition-colors duration-300 whitespace-nowrap",
                                         )}
                                     >
                                         {item.title}

@@ -91,3 +91,25 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+@layer utilities {
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+    .animate-scroll {
+        animation: scroll 25s linear infinite;
+    }
+    .paused {
+        animation-play-state: paused;
+    }
+}

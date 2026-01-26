@@ -4,10 +4,11 @@ import { timelineCarouselItems } from "@/components/about-us/timelineCarouselIte
 import { SIDE_SPACES } from "@/lib/commonStyles";
 import { cn } from "@/lib/utils";
 import DotIcon from "@assets/icons/dot.svg?react";
+import type { ClassValue } from "clsx";
 
-export default function AboutUs() {
+export default function AboutUs({ className }: { className?: ClassValue }) {
     return (
-        <div className="mt-[138px] mb-[108px]">
+        <div className={cn(className)}>
             <div
                 className={cn(
                     SIDE_SPACES.MARGIN,
@@ -18,7 +19,7 @@ export default function AboutUs() {
                     Über uns
                 </h1>
                 <p className="text-[46px] text-[#3B3B3B] font-medium max-w-[502px]">
-                    Tradition trifft moderne Handwerkskunst
+                    Tradition trifft modern e Handwerkskunst
                 </p>
             </div>
             <CertificateLetter className="mb-[132px]" />

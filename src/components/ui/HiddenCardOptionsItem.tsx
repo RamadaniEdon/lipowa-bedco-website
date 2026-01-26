@@ -41,15 +41,15 @@ export default function HiddenCardOptionsItem({
             </div>
 
             {/* Content */}
-            <h2 className="relative z-10 flex items-center gap-2 text-[26px] text-[#3B3B3B] group-hover:text-white">
+            <h2 className="relative z-10 flex items-center gap-2 text-[18px] sm:text-[20px] md:text-[23px] lg:text-[26px] text-[#3B3B3B] group-hover:text-white leading-tight">
                 {title}
 
                 <span className="transition-all duration-300 group-hover:rotate-[45deg]">
-                    <TopRightArrowIcon className="w-4 h-4 mt-1" />
+                    <TopRightArrowIcon className="w-3 h-3 md:w-4 md:h-4 mt-1" />
                 </span>
             </h2>
 
-            <p className="relative z-10 uppercase text-[#AEAEAE] group-hover:text-white font-silka-mono">
+            <p className="relative z-10 uppercase text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-[#AEAEAE] group-hover:text-white font-silka-mono">
                 {description}
             </p>
         </div>

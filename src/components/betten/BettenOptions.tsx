@@ -13,7 +13,12 @@ export default function MatratzenOptions({
     className?: ClassValue;
 }) {
     return (
-        <div className={cn("flex gap-5 justify-between h-[727px]", className)}>
+        <div
+            className={cn(
+                "flex flex-col md:flex-row gap-3 md:gap-4 lg:gap-5 justify-between h-auto md:h-[500px] lg:h-[600px] xl:h-[727px]",
+                className,
+            )}
+        >
             <HiddenCardOptionsItem
                 className="flex-1 h-full"
                 img={Betten1Img}

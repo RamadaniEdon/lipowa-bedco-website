@@ -22,28 +22,33 @@ export default function Betten({ className }: { className?: ClassValue }) {
             <div
                 className={cn(
                     SIDE_SPACES.MARGIN,
-                    "flex justify-between items-end mb-[120px] gap-10",
+                    "flex flex-col md:flex-row justify-between items-start md:items-end mb-[60px] md:mb-[80px] lg:mb-[120px] gap-6 md:gap-8 lg:gap-10",
                 )}
             >
-                <h1 className="text-[140px] font-silka-mono text-[#232A11] uppercase leading-none">
+                <h1 className="text-[60px] sm:text-[80px] md:text-[100px] lg:text-[140px] font-silka-mono text-[#232A11] uppercase leading-none">
                     Betten
                 </h1>
-                <div className="max-w-[667px] flex flex-col gap-[16px] text-right">
-                    <p className="text-[46px] text-[#AEAEAE] font-medium">
+                <div className="max-w-[667px] flex flex-col gap-[12px] md:gap-[16px] text-left md:text-right">
+                    <p className="text-[24px] sm:text-[32px] md:text-[38px] lg:text-[46px] text-[#AEAEAE] font-medium leading-tight">
                         Betten,{" "}
                         <span className="text-[#3B3B3B]">die Komfort</span>
                     </p>
-                    <p className="text-[22px] text-[#AEAEAE] font-medium">
+                    <p className="text-[16px] md:text-[18px] lg:text-[22px] text-[#AEAEAE] font-medium">
                         In unserer Manufaktur in Edingen gefertigt, entsteht
                         jedes Bett nach Ihren Wünschen.
                     </p>
                 </div>
             </div>
-            <BettenOptions className={cn(SIDE_SPACES.MARGIN, "mb-[131px]")} />
+            <BettenOptions
+                className={cn(
+                    SIDE_SPACES.MARGIN,
+                    "mb-[60px] md:mb-[80px] lg:mb-[131px]",
+                )}
+            />
             <p
                 className={cn(
                     SIDE_SPACES.MARGIN,
-                    "text-[72px] text-[#AEAEAE] text-right",
+                    "text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] text-[#AEAEAE] text-left md:text-right leading-tight",
                 )}
             >
                 Jedes Bett lässt sich in{" "}
@@ -51,18 +56,26 @@ export default function Betten({ className }: { className?: ClassValue }) {
                 individuell gestalten – für Ihren persönlichen{" "}
                 <span className="text-[#3B3B3B]">Komfort und Stil.</span>
             </p>
-            <hr className="bg-[#AEAEAE] my-[80px]" />
+            <hr className="bg-[#AEAEAE] my-[40px] md:my-[60px] lg:my-[80px]" />
 
             <AccordionWithBettenImages
-                className={cn(SIDE_SPACES.MARGIN, "mb-[120px]")}
+                className={cn(
+                    SIDE_SPACES.MARGIN,
+                    "mb-[60px] md:mb-[80px] lg:mb-[120px]",
+                )}
             />
-            <div className="bg-[#2F2F2F] mb-[120px] py-[120px] text-white">
-                <div className={cn(SIDE_SPACES.MARGIN, "mb-[120px]")}>
-                    <p className="text-right flex text-white items-center gap-2 uppercase font-silka-mono text-[22px] mb-[60px]">
+            <div className="bg-[#2F2F2F] mb-[60px] md:mb-[80px] lg:mb-[120px] py-[60px] md:py-[80px] lg:py-[120px] text-white">
+                <div
+                    className={cn(
+                        SIDE_SPACES.MARGIN,
+                        "mb-[60px] md:mb-[80px] lg:mb-[120px]",
+                    )}
+                >
+                    <p className="text-left md:text-right flex md:justify-end text-white items-center gap-2 uppercase font-silka-mono text-[16px] md:text-[18px] lg:text-[22px] mb-[30px] md:mb-[40px] lg:mb-[60px]">
                         <DotIcon className="text-white w-3 h-3 overflow-visible" />
                         <span className="text-white">Family Beds</span>
                     </p>
-                    <p className="text-[72px]">
+                    <p className="text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] leading-tight text-left md:text-right">
                         Familienbetten für gemeinsame Momente, gemütliche Morgen
                         und erholsame Nächte – für Komfort und Zusammenhalt in
                         Ihrem Zuhause.
@@ -79,7 +92,7 @@ export default function Betten({ className }: { className?: ClassValue }) {
                 <div
                     className={cn(
                         SIDE_SPACES.MARGIN,
-                        "flex justify-between text-[18px] text-[#AEAEAE] leading-[30px] gap-[150px]",
+                        "flex flex-col md:flex-row justify-between text-[16px] md:text-[18px] text-[#AEAEAE] leading-[26px] md:leading-[30px] gap-8 md:gap-[100px] lg:gap-[150px]",
                     )}
                 >
                     <p>
@@ -105,14 +118,16 @@ export default function Betten({ className }: { className?: ClassValue }) {
             <div
                 className={cn(
                     SIDE_SPACES.MARGIN,
-                    "flex justify-between text-[#3B3B3B] items-center",
+                    "flex flex-col md:flex-row justify-between text-[#3B3B3B] items-start md:items-center gap-4 md:gap-6",
                 )}
             >
-                <p className="flex items-center gap-2 text-[22px] uppercase font-silka-mono">
+                <p className="flex items-center gap-2 text-[16px] md:text-[18px] lg:text-[22px] uppercase font-silka-mono">
                     <DotIcon className="" />
                     faq
                 </p>
-                <p className="text-[72px]">Fragen? Wir helfen gern weiter</p>
+                <p className="text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] leading-tight">
+                    Fragen? Wir helfen gern weiter
+                </p>
                 <div className="group flex text-[18px] items-center mt-4">
                     <Button
                         className="
@@ -142,10 +157,15 @@ export default function Betten({ className }: { className?: ClassValue }) {
                     </Button>
                 </div>
             </div>
-            <hr className="my-[86px]" />
-            <div className={cn(SIDE_SPACES.MARGIN, "mb-[180px]")}>
-                <div className="flex gap-[112px]">
-                    <p className="font-silka-mono text-[22px] uppercase text-[#AEAEAE] mt-[43px] w-[200px]">
+            <hr className="my-[40px] md:my-[60px] lg:my-[86px]" />
+            <div
+                className={cn(
+                    SIDE_SPACES.MARGIN,
+                    "mb-[80px] md:mb-[120px] lg:mb-[180px]",
+                )}
+            >
+                <div className="flex flex-col md:flex-row gap-6 md:gap-[60px] lg:gap-[112px]">
+                    <p className="font-silka-mono text-[16px] md:text-[18px] lg:text-[22px] uppercase text-[#AEAEAE] mt-0 md:mt-[43px] w-full md:w-[200px]">
                         Materialien + Qualitaet
                     </p>
                     <Accordion
@@ -173,9 +193,9 @@ export default function Betten({ className }: { className?: ClassValue }) {
                         hideLastBorder
                     />
                 </div>
-                <hr className="my-[70px]" />
-                <div className="flex gap-[112px]">
-                    <p className="font-silka-mono text-[22px] uppercase text-[#AEAEAE] mt-[43px] w-[200px]">
+                <hr className="my-[40px] md:my-[50px] lg:my-[70px]" />
+                <div className="flex flex-col md:flex-row gap-6 md:gap-[60px] lg:gap-[112px]">
+                    <p className="font-silka-mono text-[16px] md:text-[18px] lg:text-[22px] uppercase text-[#AEAEAE] mt-0 md:mt-[43px] w-full md:w-[200px]">
                         Größen + Anpassung
                     </p>
                     <Accordion
@@ -200,14 +220,14 @@ export default function Betten({ className }: { className?: ClassValue }) {
             </div>
             <div className="overflow-hidden w-full">
                 <div className="flex whitespace-nowrap animate-marquee">
-                    <div className="text-[#AEAEAE] uppercase text-[32px] pr-10">
+                    <div className="text-[#AEAEAE] uppercase text-[18px] sm:text-[22px] md:text-[26px] lg:text-[32px] pr-10">
                         Qualität • Komfort • Handwerkskunst, die bleibt • Für
                         perfekten Schlaf entworfen • Lokal hergestellt •
                         Ergonomisch und nachhaltig •
                     </div>
 
                     {/* Duplicate for seamless loop */}
-                    <div className="text-[#AEAEAE] uppercase text-[32px] pr-10">
+                    <div className="text-[#AEAEAE] uppercase text-[18px] sm:text-[22px] md:text-[26px] lg:text-[32px] pr-10">
                         Qualität • Komfort • Handwerkskunst, die bleibt • Für
                         perfekten Schlaf entworfen • Lokal hergestellt •
                         Ergonomisch und nachhaltig •

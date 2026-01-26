@@ -21,43 +21,51 @@ export default function SomeMatratzen({
             <div
                 className={cn(
                     SIDE_SPACES.MARGIN,
-                    "flex justify-between items-end mb-[120px] gap-10",
+                    "flex flex-col-reverse md:flex-row justify-between items-start md:items-end mb-[60px] md:mb-[80px] lg:mb-[120px] gap-6 md:gap-8 lg:gap-10",
                 )}
             >
-                <p className="max-w-[520px] text-[22px] text-[#AEAEAE]">
+                <p className="max-w-[520px] text-[16px] md:text-[18px] lg:text-[22px] text-[#AEAEAE]">
                     Atmosphäre zu verlieren. Stabil und zugleich komfortabel,
                     halten sie spielerische Morgen, ruhige
                 </p>
-                <h1 className="text-[80px] font-silka-mono text-[#232A11] uppercase leading-none">
+                <h1 className="text-[40px] sm:text-[50px] md:text-[60px] lg:text-[80px] font-silka-mono text-[#232A11] uppercase leading-none">
                     Kaltschaummatratzen
                 </h1>
             </div>
             <MatratzenOneVariants
-                className={cn(SIDE_SPACES.MARGIN, "mb-[120px]")}
+                className={cn(
+                    SIDE_SPACES.MARGIN,
+                    "mb-[60px] md:mb-[80px] lg:mb-[120px]",
+                )}
             />
 
             <div className="bg-[#ECECEC]">
                 <PremiumOptions
-                    className={cn(SIDE_SPACES.MARGIN, "py-[120px] mb-[120px]")}
+                    className={cn(
+                        SIDE_SPACES.MARGIN,
+                        "py-[60px] md:py-[80px] lg:py-[120px] mb-[60px] md:mb-[80px] lg:mb-[120px]",
+                    )}
                 />
             </div>
 
             <AccordionOneWithMatratzenImages
                 className={cn(SIDE_SPACES.MARGIN)}
             />
-            <hr className="my-[120px]" />
+            <hr className="my-[60px] md:my-[80px] lg:my-[120px]" />
             <div
                 className={cn(
                     SIDE_SPACES.MARGIN,
-                    "flex justify-between text-[#3B3B3B] items-center",
+                    "flex flex-col md:flex-row justify-between text-[#3B3B3B] items-start md:items-center gap-4 md:gap-6",
                 )}
             >
-                <p className="flex items-center gap-2 text-[22px] uppercase font-silka-mono">
+                <p className="flex items-center gap-2 text-[16px] md:text-[18px] lg:text-[22px] uppercase font-silka-mono">
                     <DotIcon className="" />
                     faq
                 </p>
-                <p className="text-[72px]">Fragen? Wir helfen gern weiter</p>
-                <div className="group flex text-[18px] items-center mt-4">
+                <p className="text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] leading-tight">
+                    Fragen? Wir helfen gern weiter
+                </p>
+                <div className="group flex text-[16px] md:text-[18px] items-center mt-4">
                     <Button
                         className="
                         px-[30px] py-[11px]
@@ -86,10 +94,15 @@ export default function SomeMatratzen({
                     </Button>
                 </div>
             </div>
-            <hr className="my-[86px]" />
-            <div className={cn(SIDE_SPACES.MARGIN, "mb-[180px]")}>
-                <div className="flex gap-[112px]">
-                    <p className="font-silka-mono text-[22px] uppercase text-[#AEAEAE] mt-[43px] w-[200px]">
+            <hr className="my-[40px] md:my-[60px] lg:my-[86px]" />
+            <div
+                className={cn(
+                    SIDE_SPACES.MARGIN,
+                    "mb-[80px] md:mb-[120px] lg:mb-[180px]",
+                )}
+            >
+                <div className="flex flex-col md:flex-row gap-6 md:gap-[60px] lg:gap-[112px]">
+                    <p className="font-silka-mono text-[16px] md:text-[18px] lg:text-[22px] uppercase text-[#AEAEAE] mt-0 md:mt-[43px] w-full md:w-[200px]">
                         Materialien + Qualitaet
                     </p>
                     <Accordion
@@ -117,9 +130,9 @@ export default function SomeMatratzen({
                         hideLastBorder
                     />
                 </div>
-                <hr className="my-[70px]" />
-                <div className="flex gap-[112px]">
-                    <p className="font-silka-mono text-[22px] uppercase text-[#AEAEAE] mt-[43px] w-[200px]">
+                <hr className="my-[40px] md:my-[50px] lg:my-[70px]" />
+                <div className="flex flex-col md:flex-row gap-6 md:gap-[60px] lg:gap-[112px]">
+                    <p className="font-silka-mono text-[16px] md:text-[18px] lg:text-[22px] uppercase text-[#AEAEAE] mt-0 md:mt-[43px] w-full md:w-[200px]">
                         Größen + Anpassung
                     </p>
                     <Accordion
@@ -144,14 +157,14 @@ export default function SomeMatratzen({
             </div>
             <div className="overflow-hidden w-full">
                 <div className="flex whitespace-nowrap animate-marquee">
-                    <div className="text-[#AEAEAE] uppercase text-[32px] pr-10">
+                    <div className="text-[#AEAEAE] uppercase text-[18px] sm:text-[22px] md:text-[26px] lg:text-[32px] pr-10">
                         Qualität • Komfort • Handwerkskunst, die bleibt • Für
                         perfekten Schlaf entworfen • Lokal hergestellt •
                         Ergonomisch und nachhaltig •
                     </div>
 
                     {/* Duplicate for seamless loop */}
-                    <div className="text-[#AEAEAE] uppercase text-[32px] pr-10">
+                    <div className="text-[#AEAEAE] uppercase text-[18px] sm:text-[22px] md:text-[26px] lg:text-[32px] pr-10">
                         Qualität • Komfort • Handwerkskunst, die bleibt • Für
                         perfekten Schlaf entworfen • Lokal hergestellt •
                         Ergonomisch und nachhaltig •

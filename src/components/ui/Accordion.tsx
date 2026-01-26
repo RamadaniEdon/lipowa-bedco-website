@@ -55,15 +55,15 @@ export function Accordion({
                     >
                         <button
                             onClick={() => onSelectItem(item.id)}
-                            className="flex w-full items-center justify-between py-4 text-left font-medium transition-all hover:text-gray-900 group"
+                            className="flex w-full items-center justify-between py-3 md:py-4 text-left font-medium transition-all hover:text-gray-900 group"
                         >
-                            <span className="text-[47px] text-[#3B3B3B]">
+                            <span className="text-[24px] sm:text-[32px] md:text-[38px] lg:text-[47px] text-[#3B3B3B] leading-tight pr-4">
                                 {item.title}
                             </span>
                             {/* Plus icon: Visible when closed (not open), disappears when open */}
                             <span
                                 className={cn(
-                                    "text-[80px] font-thin text-[#3B3B3B] transition-opacity duration-300",
+                                    "text-[40px] sm:text-[50px] md:text-[65px] lg:text-[80px] font-thin text-[#3B3B3B] transition-opacity duration-300",
                                     isOpen ? "opacity-0" : "opacity-100",
                                 )}
                             >
@@ -77,7 +77,7 @@ export function Accordion({
                             )}
                         >
                             <div className="overflow-hidden">
-                                <div className="text-[22px] pb-4 text-[#3B3B3B] leading-relaxed mb-10 pr-4">
+                                <div className="text-[16px] md:text-[18px] lg:text-[22px] pb-3 md:pb-4 text-[#3B3B3B] leading-relaxed mb-6 md:mb-8 lg:mb-10 pr-2 md:pr-4">
                                     {item.content}
                                 </div>
                             </div>

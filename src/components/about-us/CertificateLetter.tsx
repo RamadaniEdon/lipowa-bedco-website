@@ -12,17 +12,17 @@ export default function CertificateLetter({
 }) {
     return (
         <div className={cn("relative", className)}>
-            <figure className="w-full h-[720px] over">
+            <figure className="w-full h-[400px] md:h-[550px] lg:h-[720px]">
                 <img
                     src={AboutUsImg}
                     alt=""
                     className="h-full w-full object-cover"
                 />
             </figure>
-            <div className="bg-[#253C5B] flex justify-center pt-[90px]">
+            <div className="bg-[#253C5B] flex justify-center pt-[40px] md:pt-[60px] lg:pt-[90px]">
                 <PageInon className="text-white w-11/12 h-fit" />
             </div>
-            <CertificateLetterContent className="absolute w-10/12 max-w-[1300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-2" />
+            <CertificateLetterContent className="absolute w-11/12 md:w-10/12 max-w-[1300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-1 md:-rotate-2" />
         </div>
     );
 }
@@ -34,18 +34,18 @@ function CertificateLetterContent({ className }: { className?: ClassValue }) {
                 <div
                     className={cn(
                         "border-[#004097] border-[2px]",
-                        "flex justify-center gap-10 px-[90px] py-[150px]",
+                        "flex flex-col lg:flex-row justify-center gap-6 md:gap-8 lg:gap-10 px-[30px] sm:px-[50px] md:px-[70px] lg:px-[90px] py-[60px] sm:py-[90px] md:py-[120px] lg:py-[150px]",
                     )}
                 >
                     <div className="flex-1 flex flex-col justify-between">
-                        <h2 className="text-[#3B3B3B] text-[42px]">
+                        <h2 className="text-[#3B3B3B] text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-tight">
                             Handwerkskunst,
                             <br />
                             <i className="text-[#AEAEAE]">
                                 Eine Frage der Leidenschaft
                             </i>
                         </h2>
-                        <p className="text-[#3B3B3B] text-[16px] leading-[30px]">
+                        <p className="text-[#3B3B3B] text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] leading-[26px] md:leading-[28px] lg:leading-[30px]">
                             <span className="text-[#AEAEAE]">
                                 Seit über 100 Jahren steht Lipowa für Qualität,
                                 Präzision und echten Komfort. Unsere Produkte
@@ -62,12 +62,12 @@ function CertificateLetterContent({ className }: { className?: ClassValue }) {
                             einzigartig sind.
                         </p>
                     </div>
-                    <div className="min-h-full w-[1px] border-[#3B3B3B] border-[1px] relative">
+                    <div className="hidden lg:block min-h-full w-[1px] border-[#3B3B3B] border-[1px] relative">
                         <div className="absolute top-[-20px] right-[-1px] w-[1px] h-5 border-[#3B3B3B] border-[1px]"></div>
                         <div className="absolute bottom-[-20px] right-[-1px] w-[1px] h-5 border-[#3B3B3B] border-[1px]"></div>
                     </div>
                     <div className="flex-1">
-                        <p className="text-[#3B3B3B] text-[16px] leading-[30px]">
+                        <p className="text-[#3B3B3B] text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] leading-[26px] md:leading-[28px] lg:leading-[30px]">
                             Unsere Produkte sind mehr als nur Möbel – sie sind
                             Orte des Wohlbefindens, die Geschichten von
                             Handwerkskunst, Leidenschaft und Nachhaltigkeit
@@ -95,7 +95,7 @@ function CertificateLetterContent({ className }: { className?: ClassValue }) {
             <img
                 src={StampIcon}
                 alt=""
-                className="absolute bottom-14 right-14 w-[100px] h-[100px] -rotate-[7deg]"
+                className="absolute bottom-8 md:bottom-10 lg:bottom-14 right-8 md:right-10 lg:right-14 w-[60px] h-[60px] md:w-[80px] md:h-[80px] lg:w-[100px] lg:h-[100px] -rotate-[5deg] md:-rotate-[7deg]"
             />
         </div>
     );

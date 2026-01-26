@@ -12,18 +12,23 @@ export default function AboutUs({ className }: { className?: ClassValue }) {
             <div
                 className={cn(
                     SIDE_SPACES.MARGIN,
-                    "flex justify-between items-center mb-[120px]",
+                    "flex flex-col md:flex-row justify-between items-start md:items-center mb-[60px] md:mb-[80px] lg:mb-[120px] gap-6 md:gap-8",
                 )}
             >
-                <h1 className="text-[140px] font-silka-mono text-[#232A11] uppercase">
+                <h1 className="text-[60px] sm:text-[80px] md:text-[100px] lg:text-[140px] font-silka-mono text-[#232A11] uppercase leading-none">
                     Über uns
                 </h1>
-                <p className="text-[46px] text-[#3B3B3B] font-medium max-w-[502px]">
+                <p className="text-[24px] sm:text-[32px] md:text-[38px] lg:text-[46px] text-[#3B3B3B] font-medium max-w-[502px] leading-tight">
                     Tradition trifft modern e Handwerkskunst
                 </p>
             </div>
-            <CertificateLetter className="mb-[132px]" />
-            <div className={cn(SIDE_SPACES.MARGIN, "flex justify-between")}>
+            <CertificateLetter className="mb-[60px] md:mb-[80px] lg:mb-[132px]" />
+            <div
+                className={cn(
+                    SIDE_SPACES.MARGIN,
+                    "flex flex-col lg:flex-row justify-between gap-8 lg:gap-12",
+                )}
+            >
                 <div className="flex flex-col justify-between">
                     <p
                         className={cn(
@@ -34,11 +39,11 @@ export default function AboutUs({ className }: { className?: ClassValue }) {
                         <DotIcon className="w-3 h-3 text-[#3B3B3B]" />
                         Our Timeline
                     </p>
-                    <p className="text-[50px] text-[#AEAEAE] leading-[60px] max-w-[745px]">
+                    <p className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[50px] text-[#AEAEAE] leading-tight max-w-[745px]">
                         Unsere Geschichte – Meilensteine in über 100 Jahren
                     </p>
                 </div>
-                <p className="text-[#AEAEAE] text-[18px] max-w-[675px] leading-[30px]">
+                <p className="text-[#AEAEAE] text-[16px] md:text-[18px] max-w-[675px] leading-[26px] md:leading-[30px]">
                     Seit der Gründung 1909 hat sich unsere Manufaktur stetig
                     weiterentwickelt. Die Fertigungsprozesse wurden
                     kontinuierlich optimiert, damit stets ein optimales
@@ -53,15 +58,15 @@ export default function AboutUs({ className }: { className?: ClassValue }) {
             </div>
             <TimelineCarousel
                 items={timelineCarouselItems}
-                className="mb-[176px]"
+                className="mb-[80px] md:mb-[120px] lg:mb-[176px]"
             />
             <div
                 className={cn(
                     SIDE_SPACES.MARGIN,
-                    "flex justify-between items-end",
+                    "flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 lg:gap-12",
                 )}
             >
-                <p className="text-[#AEAEAE] text-[18px] max-w-[742px] leading-[30px]">
+                <p className="text-[#AEAEAE] text-[16px] md:text-[18px] max-w-[742px] leading-[26px] md:leading-[30px]">
                     In unserer Manufaktur werden alle Schritte der Produktion
                     sorgfältig durchgeführt. Vom ausgewählten Material über die
                     handwerkliche Verarbeitung bis hin zur finalen
@@ -72,7 +77,7 @@ export default function AboutUs({ className }: { className?: ClassValue }) {
                     Erfahrung, Sorgfalt und individueller Anpassung – ein
                     Konzept, das seit über einem Jahrhundert erfolgreich ist.
                 </p>
-                <h3 className="text-[46px] font-medium text-[#AEAEAE] max-w-[627px] leading-[56px]">
+                <h3 className="text-[24px] sm:text-[32px] md:text-[38px] lg:text-[46px] font-medium text-[#AEAEAE] max-w-[627px] leading-tight">
                     Kontinuität und Präzision in der Fertigung –{" "}
                     <span className="text-[#3B3B3B]">
                         für jedes einzelne Produkt

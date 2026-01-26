@@ -43,25 +43,30 @@ const galleryItems: GalleryItem[] = [
 
 export default function ThirdPart() {
     return (
-        <div className={cn(SIDE_SPACES.MARGIN, "my-[120px]")}>
+        <div
+            className={cn(
+                SIDE_SPACES.MARGIN,
+                "my-[60px] md:my-[80px] lg:my-[120px]",
+            )}
+        >
             <p
                 className={cn(
-                    "text-[22px] text-[#3B3B3B] mb-[60px]",
-                    "flex items-center justify-end gap-2 uppercase font-silka-mono",
+                    "text-[16px] md:text-[18px] lg:text-[22px] text-[#3B3B3B] mb-[30px] md:mb-[45px] lg:mb-[60px]",
+                    "flex items-center justify-start lg:justify-end gap-2 uppercase font-silka-mono",
                 )}
             >
                 Was uns besonders macht
                 <DotIcon className="w-3 h-3 text-[#3B3B3B]" />
             </p>
-            <div className="flex justify-between gap-[96px] mb-[120px]">
-                <p className="text-[#AEAEAE] text-[22px] self-end">
+            <div className="flex flex-col lg:flex-row justify-between gap-6 lg:gap-[96px] mb-[60px] md:mb-[80px] lg:mb-[120px]">
+                <p className="text-[#AEAEAE] text-[16px] md:text-[18px] lg:text-[22px] self-start lg:self-end leading-relaxed">
                     Seit über 100 Jahren fertigen wir Matratzen, Betten und
                     Polstermöbel mit Leidenschaft und Sorgfalt. Unsere
                     Erfahrung, die Verwendung öko-zertifizierter Materialien und
                     die Möglichkeit, Produkte individuell anzupassen, machen uns
                     zu einem zuverlässigen Partner für erholsamen Schlaf.
                 </p>
-                <p className="text-[50px] text-[#3B3B3B] min-w-[950px] text-right">
+                <p className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[50px] text-[#3B3B3B] w-full lg:min-w-[950px] text-left lg:text-right leading-tight">
                     <span className="text-[#AEAEAE]">
                         Wir verbinden höchste
                     </span>{" "}
@@ -107,7 +112,7 @@ export function ExpandingImageGallery({
     return (
         <div
             className={cn(
-                "flex w-full h-[820px] gap-3 overflow-hidden",
+                "flex w-full h-[400px] md:h-[600px] lg:h-[820px] gap-2 md:gap-3 overflow-hidden",
                 className,
             )}
         >
@@ -181,10 +186,12 @@ function GalleryImage({
                         : "opacity-0 translate-y-4 pointer-events-none",
                 )}
             >
-                <h3 className="text-white text-[42px] font-normal mb-5">
+                <h3 className="text-white text-[24px] sm:text-[32px] md:text-[36px] lg:text-[42px] font-normal mb-3 md:mb-4 lg:mb-5">
                     {item.title}
                 </h3>
-                <p className="text-white/80 text-[22px]">{item.description}</p>
+                <p className="text-white/80 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] leading-relaxed">
+                    {item.description}
+                </p>
             </div>
         </div>
     );

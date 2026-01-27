@@ -4,6 +4,7 @@ import PageInon from "@assets/icons/icon.svg?react";
 import StampIcon from "@assets/uberuns/coupon.png";
 import SignImg from "@assets/uberuns/sign.png";
 import AboutUsImg from "@assets/uberuns/uberuns-1.png";
+import { RevealFromBottom } from "../ui/Reveal";
 
 export default function CertificateLetter({
     className,
@@ -22,7 +23,9 @@ export default function CertificateLetter({
             <div className="bg-[#253C5B] flex justify-center pt-[40px] md:pt-[60px] lg:pt-[90px]">
                 <PageInon className="text-white w-11/12 h-fit" />
             </div>
-            <CertificateLetterContent className="absolute w-11/12 md:w-10/12 max-w-[1300px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-1 md:-rotate-2" />
+            <RevealFromBottom className="absolute top-1/2 left-1/2 w-11/12 delay-[400ms]">
+                <CertificateLetterContent className="md:w-10/12 max-w-[1300px] -translate-x-1/2 -translate-y-1/2 -rotate-1 md:-rotate-2" />
+            </RevealFromBottom>
         </div>
     );
 }

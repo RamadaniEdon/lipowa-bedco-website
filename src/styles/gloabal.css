@@ -113,3 +113,15 @@ body {
         animation-play-state: paused;
     }
 }
+
+/* Put map BELOW UI overlays */
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+    z-index: 0 !important;
+}
+
+/* Keep popups above tiles but still under UI */
+.leaflet-popup {
+    z-index: 10 !important;
+}

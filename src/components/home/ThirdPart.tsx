@@ -9,6 +9,7 @@ import PenEraserIcon from "@assets/icons/pen-eraser-icon.svg?react";
 import LeafIcon from "@assets/icons/leaf-icon.svg?react";
 import type { ClassValue } from "clsx";
 import { useMemo, useState } from "react";
+import { RevealFromBottom } from "../ui/Reveal";
 
 type GalleryItem = {
     src: string;
@@ -49,33 +50,38 @@ export default function ThirdPart() {
                 "my-[60px] md:my-[80px] lg:my-[120px]",
             )}
         >
-            <p
-                className={cn(
-                    "text-[16px] md:text-[18px] lg:text-[22px] text-[#3B3B3B] mb-[30px] md:mb-[45px] lg:mb-[60px]",
-                    "flex items-center justify-start lg:justify-end gap-2 uppercase font-silka-mono",
-                )}
-            >
-                Was uns besonders macht
-                <DotIcon className="w-3 h-3 text-[#3B3B3B]" />
-            </p>
-            <div className="flex flex-col lg:flex-row justify-between gap-6 lg:gap-[96px] mb-[60px] md:mb-[80px] lg:mb-[120px]">
-                <p className="text-[#AEAEAE] text-[16px] md:text-[18px] lg:text-[22px] self-start lg:self-end leading-relaxed">
-                    Seit über 100 Jahren fertigen wir Matratzen, Betten und
-                    Polstermöbel mit Leidenschaft und Sorgfalt. Unsere
-                    Erfahrung, die Verwendung öko-zertifizierter Materialien und
-                    die Möglichkeit, Produkte individuell anzupassen, machen uns
-                    zu einem zuverlässigen Partner für erholsamen Schlaf.
+            <RevealFromBottom>
+                <p
+                    className={cn(
+                        "text-[16px] md:text-[18px] lg:text-[22px] text-[#3B3B3B] mb-[30px] md:mb-[45px] lg:mb-[60px]",
+                        "flex items-center justify-start lg:justify-end gap-2 uppercase font-silka-mono",
+                    )}
+                >
+                    Was uns besonders macht
+                    <DotIcon className="w-3 h-3 text-[#3B3B3B]" />
                 </p>
-                <p className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[50px] text-[#3B3B3B] w-full lg:min-w-[950px] text-left lg:text-right leading-tight">
-                    <span className="text-[#AEAEAE]">
-                        Wir verbinden höchste
-                    </span>{" "}
-                    Qualität, Nachhaltigkeit und persönlichen Komfort,{" "}
-                    <span className="text-[#AEAEAE]">für erholsamen</span>{" "}
-                    Schlaf jeden Tag.
-                </p>
-            </div>
-            <ExpandingImageGallery galleryImages={galleryItems} />
+                <div className="flex flex-col lg:flex-row justify-between gap-6 lg:gap-[96px] mb-[60px] md:mb-[80px] lg:mb-[120px]">
+                    <p className="text-[#AEAEAE] text-[16px] md:text-[18px] lg:text-[22px] self-start lg:self-end leading-relaxed">
+                        Seit über 100 Jahren fertigen wir Matratzen, Betten und
+                        Polstermöbel mit Leidenschaft und Sorgfalt. Unsere
+                        Erfahrung, die Verwendung öko-zertifizierter Materialien
+                        und die Möglichkeit, Produkte individuell anzupassen,
+                        machen uns zu einem zuverlässigen Partner für erholsamen
+                        Schlaf.
+                    </p>
+                    <p className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[50px] text-[#3B3B3B] w-full lg:min-w-[950px] text-left lg:text-right leading-tight">
+                        <span className="text-[#AEAEAE]">
+                            Wir verbinden höchste
+                        </span>{" "}
+                        Qualität, Nachhaltigkeit und persönlichen Komfort,{" "}
+                        <span className="text-[#AEAEAE]">für erholsamen</span>{" "}
+                        Schlaf jeden Tag.
+                    </p>
+                </div>
+            </RevealFromBottom>
+            <RevealFromBottom>
+                <ExpandingImageGallery galleryImages={galleryItems} />
+            </RevealFromBottom>
         </div>
     );
 }

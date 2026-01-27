@@ -2,6 +2,7 @@ import { useState } from "react";
 import { cn } from "@lib/utils";
 import { type ClassValue } from "clsx";
 import { Accordion, type AccordionItem } from "./Accordion";
+import { RevealFromLeft, RevealFromRight } from "./Reveal";
 
 export interface AccordionWithImageItem extends AccordionItem {
     image: string; // URL or path to image
@@ -27,31 +28,34 @@ export function AccordionWithImages({
             )}
         >
             {/* Left Side: Image */}
-            <div className="w-[900px] h-[680px] relative overflow-hidden shadow-lg">
-                {items.map((item) => (
-                    <img
-                        key={item.id}
-                        src={item.image}
-                        alt={item.title}
-                        className={cn(
-                            "absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out",
-                            item.id === selectedId
-                                ? "opacity-100 z-10"
-                                : "opacity-0 z-0",
-                        )}
-                    />
-                ))}
-            </div>
+            <RevealFromLeft>
+                <div className="w-[900px] h-[680px] relative overflow-hidden shadow-lg">
+                    {items.map((item) => (
+                        <img
+                            key={item.id}
+                            src={item.image}
+                            alt={item.title}
+                            className={cn(
+                                "absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out",
+                                item.id === selectedId
+                                    ? "opacity-100 z-10"
+                                    : "opacity-0 z-0",
+                            )}
+                        />
+                    ))}
+                </div>
+            </RevealFromLeft>
 
-            {/* Right Side: Accordion */}
-            <div className="flex items-center justify-end">
-                <Accordion
-                    items={items}
-                    selectedId={selectedId}
-                    onSelect={setSelectedId}
-                    className="w-full max-w-[800px]"
-                />
-            </div>
+            <RevealFromRight>
+                <div className="flex items-center justify-end">
+                    <Accordion
+                        items={items}
+                        selectedId={selectedId}
+                        onSelect={setSelectedId}
+                        className="w-full max-w-[800px]"
+                    />
+                </div>
+            </RevealFromRight>
         </div>
     );
 }

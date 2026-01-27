@@ -7,6 +7,7 @@ import Button from "../ui/Button";
 import GeneralCarousel, { type CarouselRef } from "./GeneralCarousel";
 import { useRef } from "react";
 import TestimonialCard from "./TestimonialCard";
+import { RevealFromBottom, RevealFromRight } from "../ui/Reveal";
 
 const CAROUSEL_ITEMS = [
     <TestimonialCard
@@ -53,85 +54,88 @@ export default function FourthPart() {
                 "bg-[#ECECEC] mt-[60px] md:mt-[80px] lg:mt-[120px] py-[60px] md:py-[80px] lg:py-[120px]",
             )}
         >
-            <div
-                className={cn(
-                    SIDE_SPACES.MARGIN,
-                    "mb-[30px] md:mb-[45px] lg:mb-[60px]",
-                )}
-            >
-                <p
+            <RevealFromBottom>
+                <div
                     className={cn(
-                        "text-[16px] md:text-[18px] lg:text-[22px] text-[#3B3B3B]",
-                        "flex items-center gap-2 uppercase text-left lg:text-right font-silka-mono",
+                        SIDE_SPACES.MARGIN,
+                        "mb-[30px] md:mb-[45px] lg:mb-[60px]",
                     )}
                 >
-                    <DotIcon className="w-3 h-3 text-[#3B3B3B]" />
-                    Kundenstimmen
-                </p>
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 lg:gap-8">
-                    <p className="text-[#3B3B3B] text-[24px] sm:text-[32px] md:text-[38px] lg:text-[44px] max-w-[962px] leading-tight">
-                        Erfahrungen unserer Kunden – echte Stimmen, die fur
-                        Qualitat und Vertrauen sprechen.
+                    <p
+                        className={cn(
+                            "text-[16px] md:text-[18px] lg:text-[22px] text-[#3B3B3B]",
+                            "flex items-center gap-2 uppercase text-left lg:text-right font-silka-mono",
+                        )}
+                    >
+                        <DotIcon className="w-3 h-3 text-[#3B3B3B]" />
+                        Kundenstimmen
                     </p>
-                    <div className="flex gap-3 md:gap-4 lg:gap-5">
-                        <Button
-                            onClick={() => carouselRef.current?.goPrev()}
-                            className={cn(
-                                "group",
-                                "bg-white",
-                                "border-[#3B3B3B]",
-                                "border-[2px]",
-                                "px-[12px]",
-                                "py-[12px]",
-                                "transition-colors",
-                                "duration-300",
-                                "hover:bg-[#3B3B3B]",
-                            )}
-                        >
-                            <LeftArrowIcon
+                    <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 lg:gap-8">
+                        <p className="text-[#3B3B3B] text-[24px] sm:text-[32px] md:text-[38px] lg:text-[44px] max-w-[962px] leading-tight">
+                            Erfahrungen unserer Kunden – echte Stimmen, die fur
+                            Qualitat und Vertrauen sprechen.
+                        </p>
+                        <div className="flex gap-3 md:gap-4 lg:gap-5">
+                            <Button
+                                onClick={() => carouselRef.current?.goPrev()}
                                 className={cn(
-                                    "text-[#3B3B3B]",
+                                    "group",
+                                    "bg-white",
+                                    "border-[#3B3B3B]",
+                                    "border-[2px]",
+                                    "px-[12px]",
+                                    "py-[12px]",
                                     "transition-colors",
                                     "duration-300",
-                                    "group-hover:text-white",
+                                    "hover:bg-[#3B3B3B]",
                                 )}
-                            />
-                        </Button>
+                            >
+                                <LeftArrowIcon
+                                    className={cn(
+                                        "text-[#3B3B3B]",
+                                        "transition-colors",
+                                        "duration-300",
+                                        "group-hover:text-white",
+                                    )}
+                                />
+                            </Button>
 
-                        {/* RIGHT BUTTON */}
-                        <Button
-                            onClick={() => carouselRef.current?.goNext()}
-                            className={cn(
-                                "group",
-                                "bg-[#3B3B3B]",
-                                "border-[#3B3B3B]",
-                                "border-[2px]",
-                                "px-[12px]",
-                                "py-[12px]",
-                                "transition-colors",
-                                "duration-300",
-                                "hover:bg-white",
-                            )}
-                        >
-                            <RightArrowIcon
+                            {/* RIGHT BUTTON */}
+                            <Button
+                                onClick={() => carouselRef.current?.goNext()}
                                 className={cn(
-                                    "text-white",
+                                    "group",
+                                    "bg-[#3B3B3B]",
+                                    "border-[#3B3B3B]",
+                                    "border-[2px]",
+                                    "px-[12px]",
+                                    "py-[12px]",
                                     "transition-colors",
                                     "duration-300",
-                                    "group-hover:text-[#3B3B3B]",
+                                    "hover:bg-white",
                                 )}
-                            />
-                        </Button>
+                            >
+                                <RightArrowIcon
+                                    className={cn(
+                                        "text-white",
+                                        "transition-colors",
+                                        "duration-300",
+                                        "group-hover:text-[#3B3B3B]",
+                                    )}
+                                />
+                            </Button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <GeneralCarousel
-                width={1280}
-                ref={carouselRef}
-                items={CAROUSEL_ITEMS}
-                className={cn(SIDE_SPACES.PADDING_LEFT)}
-            />
+            </RevealFromBottom>
+            <RevealFromRight>
+                <GeneralCarousel
+                    width={1280}
+                    ref={carouselRef}
+                    items={CAROUSEL_ITEMS}
+                    className={cn(SIDE_SPACES.PADDING_LEFT)}
+                />
+            </RevealFromRight>
         </div>
     );
 }

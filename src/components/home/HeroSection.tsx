@@ -1,4 +1,5 @@
 import headerImage from "@assets/landing-page/landing-page-img-1.png";
+import { RevealFromBottom } from "../ui/Reveal";
 
 export default function HeroSection() {
     return (
@@ -10,18 +11,21 @@ export default function HeroSection() {
             />
 
             {/* Center-left text */}
-            <div className="uppercase absolute left-5 top-1/2 -translate-y-1/2 text-white font-silka-mono text-[clamp(36px,5.6vw,108px)] leading-[1.1]">
-                Ihre perfekte
-                <br />
-                Matratze,
-            </div>
+            <RevealFromBottom className="absolute left-5 top-1/2 -translate-y-1/2">
+                <div className="uppercase text-white font-silka-mono text-[clamp(36px,5.6vw,108px)] leading-[1.1]">
+                    Ihre perfekte
+                    <br />
+                    Matratze,
+                </div>
+            </RevealFromBottom>
 
-            {/* Bottom-right text */}
-            <div className="uppercase absolute bottom-5 right-5 text-white font-silka-mono text-[clamp(36px,5.6vw,108px)] leading-[1.1] text-right">
-                Unser
-                <br />
-                Handwerk
-            </div>
+            <RevealFromBottom className="absolute bottom-5 right-5">
+                <div className="uppercase text-white font-silka-mono text-[clamp(36px,5.6vw,108px)] leading-[1.1] text-right">
+                    Unser
+                    <br />
+                    Handwerk
+                </div>
+            </RevealFromBottom>
         </div>
     );
 }

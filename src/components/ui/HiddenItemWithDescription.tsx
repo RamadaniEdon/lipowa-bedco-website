@@ -52,13 +52,11 @@ export default function HiddenItemWithDescription({
                     {description}
                 </p>
             </div>
-
             <img
                 src={img}
                 alt=""
                 className="absolute inset-0 w-full h-full object-contain transition-opacity duration-500 group-hover:opacity-0"
             />
-
             <h2
                 className="
                         text-[26px] text-[#3B3B3B] flex items-center gap-2

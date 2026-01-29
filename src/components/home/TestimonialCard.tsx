@@ -24,11 +24,11 @@ export default function TestimonialCard({
         >
             <div>
                 <AvatarBadge className="mb-[30px]">{fullName}</AvatarBadge>
-                <p className="text-[#3B3B3B] text-[32px] mb-[150px]">
+                <p className="text-[#3B3B3B] text-[22px] md:text-[26px] xl:text-[32px] mb-[50px] md:mb-[80px] lg:mb-[150px]">
                     {testimonial}
                 </p>
             </div>
-            <div className="flex justify-between text-[22px] text-[#AEAEAE]">
+            <div className="flex justify-between gap-4 text-[16px] md:text-[18px] lg:text-[22px] text-[#AEAEAE]">
                 <p>{occupation}</p>
                 <p>{place}</p>
             </div>

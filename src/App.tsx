@@ -7,10 +7,12 @@ import Betten from "./pages/Betten";
 import SomeMatratzen from "./pages/SomeMatratzen";
 import Kontakt from "./pages/Kontakt";
 import Matratzen from "./pages/Matratzen";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
     return (
         <>
+            <ScrollToTop />
             <Header />
             <main>
                 <Routes>

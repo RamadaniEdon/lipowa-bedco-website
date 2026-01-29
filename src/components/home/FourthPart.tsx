@@ -8,6 +8,7 @@ import GeneralCarousel, { type CarouselRef } from "./GeneralCarousel";
 import { useRef } from "react";
 import TestimonialCard from "./TestimonialCard";
 import { RevealFromBottom, RevealFromRight } from "../ui/Reveal";
+import { useResponsiveValue } from "@/hooks/useResponsiveValue";
 
 const CAROUSEL_ITEMS = [
     <TestimonialCard
@@ -48,6 +49,14 @@ const CAROUSEL_ITEMS = [
 
 export default function FourthPart() {
     const carouselRef = useRef<CarouselRef>(null);
+
+    const itemWidth = useResponsiveValue({
+        default: 300,
+        sm: 400,
+        md: 600,
+        lg: 800,
+        xl: 1000,
+    });
     return (
         <div
             className={cn(
@@ -130,7 +139,7 @@ export default function FourthPart() {
             </RevealFromBottom>
             <RevealFromRight>
                 <GeneralCarousel
-                    width={1280}
+                    width={itemWidth}
                     ref={carouselRef}
                     items={CAROUSEL_ITEMS}
                     className={cn(SIDE_SPACES.PADDING_LEFT)}

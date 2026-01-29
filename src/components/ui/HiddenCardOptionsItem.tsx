@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import type { ClassValue } from "clsx";
 import type { ReactNode } from "react";
 import TopRightArrowIcon from "@assets/icons/up-right-arrow.svg?react";
+import { Link } from "react-router";
 
 export default function HiddenCardOptionsItem({
     title,
@@ -17,7 +18,8 @@ export default function HiddenCardOptionsItem({
     hoverImg: string;
 }) {
     return (
-        <div
+        <Link
+            to="/matratzen/1"
             className={cn(
                 "group relative bg-[#ECECEC] flex flex-col justify-end gap-2 p-[26px] overflow-hidden",
                 className,
@@ -41,7 +43,7 @@ export default function HiddenCardOptionsItem({
             </div>
 
             {/* Content */}
-            <h2 className="relative z-10 flex items-center gap-2 text-[18px] sm:text-[20px] md:text-[23px] lg:text-[26px] text-[#3B3B3B] group-hover:text-white leading-tight">
+            <h2 className="relative flex items-center gap-2 text-[18px] sm:text-[20px] md:text-[23px] lg:text-[26px] text-[#3B3B3B] group-hover:text-white leading-tight">
                 {title}
 
                 <span className="transition-all duration-300 group-hover:rotate-[45deg]">
@@ -49,9 +51,9 @@ export default function HiddenCardOptionsItem({
                 </span>
             </h2>
 
-            <p className="relative z-10 uppercase text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-[#AEAEAE] group-hover:text-white font-silka-mono">
+            <p className="relative uppercase text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-[#AEAEAE] group-hover:text-white font-silka-mono">
                 {description}
             </p>
-        </div>
+        </Link>
     );
 }

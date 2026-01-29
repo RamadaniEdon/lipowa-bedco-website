@@ -20,6 +20,7 @@ import {
     RevealFromLeft,
     RevealFromRight,
 } from "@/components/ui/Reveal";
+import { Link } from "react-router";
 
 export default function Betten({ className }: { className?: ClassValue }) {
     return (
@@ -158,7 +159,10 @@ export default function Betten({ className }: { className?: ClassValue }) {
                     </p>
                 </RevealFromBottom>
                 <RevealFromRight>
-                    <div className="group flex text-[18px] items-center mt-4">
+                    <Link
+                        to="/kontakt"
+                        className="group flex text-[18px] items-center mt-4"
+                    >
                         <Button
                             className="
                         px-[30px] py-[11px]
@@ -185,7 +189,7 @@ export default function Betten({ className }: { className?: ClassValue }) {
                         >
                             <UpRightArrowIcon className="w-4 h-4" />
                         </Button>
-                    </div>
+                    </Link>
                 </RevealFromRight>
             </div>
             <RevealFromBottom>

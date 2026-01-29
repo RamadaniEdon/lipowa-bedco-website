@@ -8,6 +8,7 @@ import BlackWhiteImg1 from "@assets/landing-page/black-white-1.png";
 import BlackWhiteImg2 from "@assets/landing-page/black-white-2.png";
 import BlackWhiteImg3 from "@assets/landing-page/black-white-3.png";
 import { RevealFromBottom } from "../ui/Reveal";
+import { Link } from "react-router";
 
 export default function FirstPart() {
     return (
@@ -51,18 +52,37 @@ export default function FirstPart() {
                             </span>{" "}
                             seit mehr als 100 Jahren.
                         </p>
-                        <div className="mt-6 md:mt-8 lg:mt-9 flex gap-2">
-                            <Button className="border-[#3B3B3B] text-[14px] md:text-[16px] lg:text-[18px] px-4 md:px-6 py-2 md:py-3">
+                        <Link
+                            to="/uber-uns"
+                            className="mt-6 md:mt-8 lg:mt-9 group flex text-[18px] items-center gap-2"
+                        >
+                            <Button
+                                className="
+                        px-[30px] py-[11px]
+                        border border-[#3B3B3B]
+                        text-black
+                        transition-all duration-300
+                        group-hover:bg-[#3B3B3B]
+                        group-hover:text-white
+                        "
+                            >
                                 Über uns
                             </Button>
+
                             <Button
-                                className={cn(
-                                    "bg-[#3B3B3B] px-[12px] md:px-[15px] py-[12px] md:py-[15px]",
-                                )}
+                                className="
+                        rounded-full p-[16px]
+                        border border-[#3B3B3B]
+                        bg-[#3B3B3B]
+                        text-white
+                        transition-all duration-300
+                        group-hover:bg-white
+                        group-hover:text-[#3B3B3B]
+                        "
                             >
-                                <UpRightArrow className="text-white text-[14px] md:text-[16px] lg:text-[18px]" />
+                                <UpRightArrow className="w-4 h-4" />
                             </Button>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </RevealFromBottom>

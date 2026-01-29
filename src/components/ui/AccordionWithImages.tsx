@@ -38,8 +38,8 @@ export function AccordionWithImages({
                             className={cn(
                                 "absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out",
                                 item.id === selectedId
-                                    ? "opacity-100 z-10"
-                                    : "opacity-0 z-0",
+                                    ? "opacity-100"
+                                    : "opacity-0",
                             )}
                         />
                     ))}

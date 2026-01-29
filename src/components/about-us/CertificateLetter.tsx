@@ -5,27 +5,131 @@ import StampIcon from "@assets/uberuns/coupon.png";
 import SignImg from "@assets/uberuns/sign.png";
 import AboutUsImg from "@assets/uberuns/uberuns-1.png";
 import { RevealFromBottom } from "../ui/Reveal";
+import { useRef, useState, useLayoutEffect } from "react";
 
 export default function CertificateLetter({
     className,
 }: {
     className?: ClassValue;
 }) {
+    const [scale, setScale] = useState(1);
+    const [height, setHeight] = useState<number | "auto">("auto");
+    const containerRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+
+    const BASE_WIDTH = 1500;
+
+    useLayoutEffect(() => {
+        const handleResize = () => {
+            const windowWidth = window.innerWidth;
+            // Calculate scale: if window is smaller than BASE_WIDTH, scale down. Max scale 1.
+            const newScale = Math.min(windowWidth / BASE_WIDTH, 1.3);
+            setScale(newScale);
+
+            // Update parent height based on scaled content height
+            if (contentRef.current) {
+                setHeight(contentRef.current.scrollHeight * newScale);
+            }
+        };
+
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+        const observer = new ResizeObserver(handleResize);
+        if (contentRef.current) {
+            observer.observe(contentRef.current);
+        }
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            observer.disconnect();
+        };
+    }, []);
+
     return (
-        <div className={cn("relative", className)}>
-            <figure className="w-full h-[400px] md:h-[550px] lg:h-[720px]">
-                <img
-                    src={AboutUsImg}
-                    alt=""
-                    className="h-full w-full object-cover"
-                />
-            </figure>
-            <div className="bg-[#253C5B] flex justify-center pt-[40px] md:pt-[60px] lg:pt-[90px]">
-                <PageInon className="text-white w-11/12 h-fit" />
+        <div
+            ref={containerRef}
+            className={cn("relative w-full overflow-hidden", className)}
+            style={{ height: height === "auto" ? "auto" : `${height}px` }}
+        >
+            <div
+                ref={contentRef}
+                className="absolute top-0 left-1/2 origin-top"
+                style={{
+                    width: `${BASE_WIDTH}px`,
+                    transform: `translateX(-50%) scale(${scale})`,
+                }}
+            >
+                <figure className="w-full h-[720px]">
+                    <img
+                        src={AboutUsImg}
+                        alt=""
+                        className="h-full w-full object-cover"
+                    />
+                </figure>
+                <div className="bg-[#253C5B] flex justify-center pt-[90px]">
+                    <PageInon className="text-white w-11/12 h-fit" />
+                </div>
+                {/* Fixed positioning: Apply translation to the container directly to avoid overflow */}
+                <RevealFromBottom
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 w-10/12 delay-[400ms]"
+                    hiddenClass="-translate-y-[50% - 30px]"
+                    visibleClass="-translate-y-1/2"
+                >
+                    <ParallaxWrapper>
+                        <CertificateLetterContent className="max-w-[1300px] -rotate-2" />
+                    </ParallaxWrapper>
+                </RevealFromBottom>
             </div>
-            <RevealFromBottom className="absolute top-1/2 left-1/2 w-11/12 delay-[400ms]">
-                <CertificateLetterContent className="md:w-10/12 max-w-[1300px] -translate-x-1/2 -translate-y-1/2 -rotate-1 md:-rotate-2" />
-            </RevealFromBottom>
+        </div>
+    );
+}
+
+function ParallaxWrapper({ children }: { children: React.ReactNode }) {
+    const ref = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+
+        const handleScroll = () => {
+            const rect = el.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const elementCenter = rect.top + rect.height / 2;
+            const viewportCenter = viewportHeight / 2;
+
+            // Distance from center (positive = below center)
+            const distFromCenter = elementCenter - viewportCenter;
+
+            // Calculate offset: move opposite to distance to stay closer to center
+            // Sensitivity factor (0.15 = moves 15% of dist)
+            const offset = -distFromCenter * 0.15;
+
+            // Limit the movement range
+            const maxOffset = 80;
+            const clampedOffset = Math.max(
+                -maxOffset,
+                Math.min(maxOffset, offset),
+            );
+
+            el.style.transform = `translateY(${clampedOffset}px)`;
+        };
+
+        // Initial calc
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleScroll);
+        };
+    }, []);
+
+    return (
+        <div ref={ref} className="will-change-transform">
+            {children}
         </div>
     );
 }
@@ -37,18 +141,18 @@ function CertificateLetterContent({ className }: { className?: ClassValue }) {
                 <div
                     className={cn(
                         "border-[#004097] border-[2px]",
-                        "flex flex-col lg:flex-row justify-center gap-6 md:gap-8 lg:gap-10 px-[30px] sm:px-[50px] md:px-[70px] lg:px-[90px] py-[60px] sm:py-[90px] md:py-[120px] lg:py-[150px]",
+                        "flex flex-row justify-center gap-10 px-[90px] py-[150px]",
                     )}
                 >
                     <div className="flex-1 flex flex-col justify-between">
-                        <h2 className="text-[#3B3B3B] text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] leading-tight">
+                        <h2 className="text-[#3B3B3B] text-[42px] leading-tight">
                             Handwerkskunst,
                             <br />
                             <i className="text-[#AEAEAE]">
                                 Eine Frage der Leidenschaft
                             </i>
                         </h2>
-                        <p className="text-[#3B3B3B] text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] leading-[26px] md:leading-[28px] lg:leading-[30px]">
+                        <p className="text-[#3B3B3B] text-[16px] leading-[30px]">
                             <span className="text-[#AEAEAE]">
                                 Seit über 100 Jahren steht Lipowa für Qualität,
                                 Präzision und echten Komfort. Unsere Produkte
@@ -65,12 +169,12 @@ function CertificateLetterContent({ className }: { className?: ClassValue }) {
                             einzigartig sind.
                         </p>
                     </div>
-                    <div className="hidden lg:block min-h-full w-[1px] border-[#3B3B3B] border-[1px] relative">
+                    <div className="block min-h-full w-[1px] border-[#3B3B3B] border-[1px] relative">
                         <div className="absolute top-[-20px] right-[-1px] w-[1px] h-5 border-[#3B3B3B] border-[1px]"></div>
                         <div className="absolute bottom-[-20px] right-[-1px] w-[1px] h-5 border-[#3B3B3B] border-[1px]"></div>
                     </div>
                     <div className="flex-1">
-                        <p className="text-[#3B3B3B] text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] leading-[26px] md:leading-[28px] lg:leading-[30px]">
+                        <p className="text-[#3B3B3B] text-[16px] leading-[30px]">
                             Unsere Produkte sind mehr als nur Möbel – sie sind
                             Orte des Wohlbefindens, die Geschichten von
                             Handwerkskunst, Leidenschaft und Nachhaltigkeit
@@ -95,10 +199,11 @@ function CertificateLetterContent({ className }: { className?: ClassValue }) {
                     </div>
                 </div>
             </div>
+
             <img
                 src={StampIcon}
                 alt=""
-                className="absolute bottom-8 md:bottom-10 lg:bottom-14 right-8 md:right-10 lg:right-14 w-[60px] h-[60px] md:w-[80px] md:h-[80px] lg:w-[100px] lg:h-[100px] -rotate-[5deg] md:-rotate-[7deg]"
+                className="absolute bottom-14 right-14 w-[100px] h-[100px] -rotate-[7deg]"
             />
         </div>
     );

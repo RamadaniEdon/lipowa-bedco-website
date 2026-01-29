@@ -177,7 +177,7 @@ function GalleryImage({
 
             {/* Icon */}
             {item.icon && (
-                <div className="absolute top-3 left-3 text-white z-10 m-5">
+                <div className="absolute top-3 left-3 text-white m-5">
                     {item.icon as React.ReactNode}
                 </div>
             )}
@@ -185,11 +185,11 @@ function GalleryImage({
             {/* Text */}
             <div
                 className={cn(
-                    "absolute bottom-4 left-4 right-4 z-10 m-5",
-                    "transition-all duration-500 ease-in-out",
+                    "absolute bottom-4 left-4 right-4 m-5",
+                    "transition-all ease-in-out",
                     isActive
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4 pointer-events-none",
+                        ? "opacity-100 delay-200 duration-500 translate-y-0"
+                        : "opacity-0 translate-y-4 duration-100 pointer-events-none",
                 )}
             >
                 <h3 className="text-white text-[24px] sm:text-[32px] md:text-[36px] lg:text-[42px] font-normal mb-3 md:mb-4 lg:mb-5">

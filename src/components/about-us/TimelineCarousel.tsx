@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { SIDE_SPACES } from "@/lib/commonStyles";
 import { RevealFromBottom, RevealFromLeft } from "../ui/Reveal";
+import NumberFlow from "@number-flow/react";
+import { useResponsiveValue } from "@/hooks/useResponsiveValue";
 
 export default function TimelineCarousel({
     className,
@@ -14,7 +16,13 @@ export default function TimelineCarousel({
     const [selectedIndex, setSelectedIndex] = useState(0);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const itemWidth = 166;
-    const itemGap = 300;
+    const itemGap = useResponsiveValue({
+        default: 50,
+        sm: 100,
+        md: 150,
+        lg: 200,
+        xl: 300,
+    });
 
     // Create tripled array for infinite scroll effect
     const tripledItems = [...items, ...items, ...items];
@@ -43,22 +51,23 @@ export default function TimelineCarousel({
             {/* Main carousel display - shows only selected item */}
             <RevealFromBottom>
                 <div className="relative w-full mb-[42px] overflow-hidden">
+                    <TimelineCarouselItem
+                        items={items}
+                        selectedIndex={selectedIndex}
+                    />
+                    {/* Separate description tags with opacity transitions */}
                     {items.map((item, index) => (
-                        <div
+                        <p
                             key={index}
                             className={cn(
-                                "transition-opacity duration-500 ease-in-out",
+                                "text-center text-[18px] leading-[30px] text-[#AEAEAE] transition-opacity duration-500 ease-in-out",
                                 selectedIndex === index
                                     ? "opacity-100"
-                                    : "opacity-0 absolute inset-0 pointer-events-none",
+                                    : "opacity-0 absolute bottom-0 left-1/2 translate-x-[-50%] pointer-events-none",
                             )}
                         >
-                            <TimelineCarouselItem
-                                year={item.year}
-                                description={item.description}
-                                images={item.images}
-                            />
-                        </div>
+                            {item.description}
+                        </p>
                     ))}
                 </div>
             </RevealFromBottom>
@@ -104,12 +113,12 @@ export default function TimelineCarousel({
                                     <div className="flex flex-col items-center gap-2">
                                         <h3
                                             className={cn(
-                                                "text-[72px] text-center transition-colors duration-300 whitespace-nowrap",
+                                                "lg:text-[72px] md:text-[52px] text-[32px] text-center transition-colors duration-300 whitespace-nowrap",
                                             )}
                                         >
                                             {item.title}
                                         </h3>
-                                        <p className="text-[20px] text-center whitespace-nowrap">
+                                        <p className="lg:text-[20px] text-[16px] text-center whitespace-nowrap">
                                             {item.shortDescription}
                                         </p>
                                     </div>
@@ -145,10 +154,13 @@ export type TimelineCarouselItemProps = {
 
 function TimelineCarouselItem({
     className,
-    year,
-    description,
-    images,
-}: Omit<TimelineCarouselItemProps, "title" | "shortDescription">) {
+    items,
+    selectedIndex,
+}: {
+    className?: ClassValue;
+    items: TimelineCarouselItemProps[];
+    selectedIndex: number;
+}) {
     const yearDivRef = useRef<HTMLDivElement>(null);
     const [yearWidth, setYearWidth] = useState<number>(0);
 
@@ -173,27 +185,52 @@ function TimelineCarouselItem({
             )}
         >
             <div className="relative" ref={yearDivRef}>
-                <p className="text-[#232A11] font-light text-[450px] tracking-[-1%]">
-                    {year}
-                </p>
-                {images.map((image, index) => (
-                    <TimelineCarouselItemImage
-                        key={index}
-                        src={image.src}
-                        parentWidth={yearWidth}
-                        widthRatio={image.widthRatio}
-                        heightRatio={image.heightRatio}
-                        topRatio={image.topRatio}
-                        leftRatio={image.leftRatio}
-                        rightRatio={image.rightRatio}
-                        bottomRatio={image.bottomRatio}
-                        rotate={image.rotate}
-                    />
-                ))}
+                {/* <p className="text-[#232A11] font-light text-[450px] tracking-[-1%]">
+                    {items[selectedIndex].year}
+                </p> */}
+                <NumberFlow
+                    value={Number(items[selectedIndex].year) || 2026}
+                    format={{ notation: "standard", useGrouping: false }}
+                    className="text-[#232A11] font-light md:text-[300px] lg:text-[450px] text-[180px] tracking-[-1%]"
+                />
+                {/* Render all images from all items */}
+                {items.map((item, itemIndex) =>
+                    item.images.map((image, imageIndex) => (
+                        <TimelineCarouselItemImage
+                            key={`${itemIndex}-${imageIndex}`}
+                            src={image.src}
+                            parentWidth={yearWidth}
+                            widthRatio={
+                                items[selectedIndex].images[imageIndex]
+                                    .widthRatio
+                            }
+                            heightRatio={
+                                items[selectedIndex].images[imageIndex]
+                                    .heightRatio
+                            }
+                            topRatio={
+                                items[selectedIndex].images[imageIndex].topRatio
+                            }
+                            leftRatio={
+                                items[selectedIndex].images[imageIndex]
+                                    .leftRatio
+                            }
+                            rightRatio={
+                                items[selectedIndex].images[imageIndex]
+                                    .rightRatio
+                            }
+                            bottomRatio={
+                                items[selectedIndex].images[imageIndex]
+                                    .bottomRatio
+                            }
+                            rotate={
+                                items[selectedIndex].images[imageIndex].rotate
+                            }
+                            isVisible={itemIndex === selectedIndex}
+                        />
+                    )),
+                )}
             </div>
-            <p className="text-center text-[18px] leading-[30px] text-[#AEAEAE]">
-                {description}
-            </p>
         </div>
     );
 }
@@ -207,32 +244,39 @@ function TimelineCarouselItemImage({
     leftRatio,
     rightRatio,
     bottomRatio,
-    rotate,
-}: TimelineCarouselItemImageProp & { parentWidth: number }) {
+    rotate = 0,
+    isVisible,
+}: TimelineCarouselItemImageProp & {
+    parentWidth: number;
+    isVisible: boolean;
+}) {
     return (
         <img
             src={src}
             alt=""
-            className="absolute p-[5px] bg-white shadow-lg box-content"
+            className={cn(
+                "absolute p-[5px] bg-white shadow-lg box-content transition-all duration-500 ease-in-out",
+                isVisible ? "opacity-100" : "opacity-0",
+            )}
             style={{
                 width: `${widthRatio * parentWidth}px`,
                 height: `${heightRatio * parentWidth}px`,
                 top:
                     topRatio !== undefined
                         ? `${topRatio * parentWidth}px`
-                        : undefined,
+                        : "auto",
                 left:
                     leftRatio !== undefined
                         ? `${leftRatio * parentWidth}px`
-                        : undefined,
+                        : "auto",
                 right:
                     rightRatio !== undefined
                         ? `${rightRatio * parentWidth}px`
-                        : undefined,
+                        : "auto",
                 bottom:
                     bottomRatio !== undefined
                         ? `${bottomRatio * parentWidth}px`
-                        : undefined,
+                        : "auto",
                 transform: `rotate(${rotate}deg)`,
             }}
         />

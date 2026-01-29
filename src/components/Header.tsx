@@ -25,7 +25,7 @@ const Navbar = ({
             {/* Backdrop blur overlay */}
             <div
                 className={cn(
-                    "fixed inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-[700ms] pointer-events-none",
+                    "fixed inset-0 bg-black/20 backdrop-blur-md transition-opacity duration-[700ms] pointer-events-none",
                     isExpanded ? "opacity-100 z-40" : "opacity-0 -z-10",
                 )}
             />

@@ -4,9 +4,9 @@ import DotIcon from "@assets/icons/dot.svg?react";
 import Button from "../ui/Button";
 import UpRightArrow from "@assets/icons/up-right-arrow.svg?react";
 
-import BlackWhiteImg1 from "@assets/landing-page/black-white-1.png";
-import BlackWhiteImg2 from "@assets/landing-page/black-white-2.png";
-import BlackWhiteImg3 from "@assets/landing-page/black-white-3.png";
+import BlackWhiteImg1 from "@assets/landing-page/first-part-1.png";
+import BlackWhiteImg2 from "@assets/landing-page/first-part-2.png";
+import BlackWhiteImg3 from "@assets/landing-page/first-part-3.png";
 import { RevealFromBottom } from "../ui/Reveal";
 import { Link } from "react-router";
 
@@ -89,20 +89,20 @@ export default function FirstPart() {
             <RevealFromBottom>
                 <div className="flex flex-col sm:flex-row justify-between gap-3 md:gap-4 lg:gap-5 mb-[60px] md:mb-[80px] lg:mb-[7.5rem] h-auto sm:h-[300px] md:h-[400px] lg:h-[505px]">
                     <img
-                        className="w-full sm:w-1/3 object-cover h-[250px] sm:h-full"
+                        className="w-full sm:w-auto sm:flex-1 sm:hover:flex-[2] transition-all duration-500 ease-in-out grayscale hover:grayscale-0 object-cover h-[250px] sm:h-full"
                         src={BlackWhiteImg1}
                         alt=""
-                    ></img>
+                    />
                     <img
-                        className="w-full sm:w-1/3 object-cover h-[250px] sm:h-full"
+                        className="w-full sm:w-auto sm:flex-1 sm:hover:flex-[2] transition-all duration-500 ease-in-out grayscale hover:grayscale-0 object-cover h-[250px] sm:h-full"
                         src={BlackWhiteImg2}
                         alt=""
-                    ></img>
+                    />
                     <img
-                        className="w-full sm:w-1/3 object-cover h-[250px] sm:h-full"
+                        className="w-full sm:w-auto sm:flex-1 sm:hover:flex-[2] transition-all duration-500 ease-in-out grayscale hover:grayscale-0 object-cover h-[250px] sm:h-full"
                         src={BlackWhiteImg3}
                         alt=""
-                    ></img>
+                    />
                 </div>
             </RevealFromBottom>
         </div>

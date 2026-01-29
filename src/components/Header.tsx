@@ -187,7 +187,7 @@ const Navbar = ({
                             </Link>
                             <Link
                                 onClick={() => setIsExpanded(false)}
-                                to="/"
+                                to="/faq"
                                 className="flex items-center space-x-1 font-silka-mono transition-colors duration-[700ms]"
                             >
                                 <span

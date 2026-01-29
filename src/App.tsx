@@ -8,6 +8,7 @@ import SomeMatratzen from "./pages/SomeMatratzen";
 import Kontakt from "./pages/Kontakt";
 import Matratzen from "./pages/Matratzen";
 import ScrollToTop from "./components/ScrollToTop";
+import Faq from "./pages/Faq";
 
 function App() {
     return (
@@ -38,6 +39,10 @@ function App() {
                     <Route
                         path="/kontakt"
                         element={<Kontakt className="mt-[138px]" />}
+                    />
+                    <Route
+                        path="/faq"
+                        element={<Faq className="mt-[138px] mb-[60px]" />}
                     />
                 </Routes>
             </main>
